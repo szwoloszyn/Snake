@@ -14,13 +14,17 @@ def check_events(screen, snake, apple):
 
 def check_keydown(event, screen, snake : MySnake, apple : Apple):
     if event.key == pygame.K_w:
-        snake.direction = Direction.UP
+        if snake.direction != Direction.DOWN:
+            snake.direction = Direction.UP
     elif event.key == pygame.K_s:
-        snake.direction = Direction.DOWN
+        if snake.direction != Direction.UP:
+            snake.direction = Direction.DOWN
     elif event.key == pygame.K_a:
-        snake.direction = Direction.LEFT
+        if snake.direction != Direction.RIGHT:
+            snake.direction = Direction.LEFT
     elif event.key == pygame.K_d:
-        snake.direction = Direction.RIGHT
+        if snake.direction != Direction.LEFT:
+            snake.direction = Direction.RIGHT
 
 def check_collision(screen, snake : MySnake, apple : Apple):
     sets = Settings()
