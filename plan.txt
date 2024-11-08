@@ -1,0 +1,11 @@
+1. zaczynam od jednoelementowego. Ma swoje wspólrzedne - współrzedne całego snakea to współrzedne pierwszego segmentu. Analogicznie z kierunkiem, zaczynam od Dir.RIGHT
+
+2. Po zmianie kierunku zmieniamy kierunek PIERWSZEGO segmentu (i węża).
+??? Tworzę kopie węża, edytuje pierwszy element dodając mu cordy i dla body[x] podstawiam body[x-1]
+Dla body[1] -> body[0]
+body[2] -> body[1]
+.
+.
+body[-1] -> body[-2]
+
+3. W każdej petli while wywołanie draw dla każdego segmentu
