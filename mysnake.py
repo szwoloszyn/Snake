@@ -27,9 +27,9 @@ class MySnake():
 
     def eat(self, seg : Segment):
         self.body.append(seg)
-        for seg in self.body:
-            print(seg.x , " , ",seg.y)
-        print("---------")
+        # for seg in self.body:
+        #     print(seg.x , " , ",seg.y)
+        # print("---------")
 
 
     def change_dir(self, dir : Direction):
