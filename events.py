@@ -15,21 +15,24 @@ def check_events(screen, snake, apple):
 def check_keydown(event, screen, snake : MySnake, apple : Apple):
     if event.key == pygame.K_w:
         if snake.direction != Direction.DOWN:
-            snake.direction = Direction.UP
+            snake.change_dir(Direction.UP)
     elif event.key == pygame.K_s:
         if snake.direction != Direction.UP:
-            snake.direction = Direction.DOWN
+            snake.change_dir(Direction.DOWN)
     elif event.key == pygame.K_a:
         if snake.direction != Direction.RIGHT:
-            snake.direction = Direction.LEFT
+            snake.change_dir(Direction.LEFT)
     elif event.key == pygame.K_d:
         if snake.direction != Direction.LEFT:
-            snake.direction = Direction.RIGHT
+            snake.change_dir(Direction.RIGHT)
+    elif event.key == pygame.K_SPACE:
+        snake.isEaten = True
 
 def check_collision(screen, snake : MySnake, apple : Apple):
     sets = Settings()
     if snake.get_pos() == apple.get_pos():
         apple.eaten(sets)
+        snake.isEaten = True
 
 
 def foo():

@@ -20,7 +20,7 @@ def run():
         snake.update(screen)
         events.check_events(screen, snake, apple)
         events.check_collision(screen, snake, apple)
-
+        
         pygame.display.flip()
 
         

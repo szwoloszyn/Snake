@@ -1,4 +1,6 @@
-1. zaczynam od jednoelementowego. Ma swoje wspólrzedne - współrzedne całego snakea to współrzedne pierwszego segmentu. Analogicznie z kierunkiem, zaczynam od Dir.RIGHT
+1. zaczynam od jednoelementowego. Ma swoje wspólrzedne - współrzedne 
+całego snakea to współrzedne pierwszego segmentu. 
+Analogicznie z kierunkiem, zaczynam od Direction.RIGHT
 
 2. Po zmianie kierunku zmieniamy kierunek PIERWSZEGO segmentu (i węża).
 ??? Tworzę kopie węża, edytuje pierwszy element dodając mu cordy i dla body[x] podstawiam body[x-1]
@@ -9,3 +11,10 @@ body[2] -> body[1]
 body[-1] -> body[-2]
 
 3. W każdej petli while wywołanie draw dla każdego segmentu
+
+4. skąd wiem jaki kierunek ma mieć nowy element węża?
+eat() wywoła funkcję move() ale zamiast usuwać ostatni element, zostawi go !
+
+### move() może zwracać ostatni element który normalnie by przepadał i korzystać z niego będe tylko w eat
+lepiej: jeśli snake zje jabłko, zmień wartość isEten na True, 
+w move() w warunku if isEaten: wywołać eat(body[-1]) i zmienić isEaten na False
