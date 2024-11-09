@@ -1,5 +1,5 @@
 import pygame
-import sys
+import sys, time
 
 from settings import *
 from mysnake import MySnake, Direction
@@ -8,9 +8,10 @@ from apple import Apple
 def check_events(screen, snake, apple):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            sys.exit()
+            game_over()
         if event.type == pygame.KEYDOWN:
           check_keydown(event, screen, snake, apple)
+          break
 
 def check_keydown(event, screen, snake : MySnake, apple : Apple):
     if event.key == pygame.K_w or event.key == pygame.K_UP:
@@ -37,11 +38,9 @@ def check_collision(screen, snake : MySnake, apple : Apple):
     check = False
     for seg in snake.body[1:]:
         if snake.x == seg.x and snake.y == seg.y:
-            check = True
-        while check:
-            pass
+            game_over()
     
-
-
-def foo():
-    print("A")
+def game_over():
+    time.sleep(0.3)
+    pygame.quit()
+    sys.exit()

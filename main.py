@@ -13,6 +13,7 @@ def run():
     screen.fill(sets.bg_color)
     apple = Apple(sets)
     snake = MySnake(sets)
+    clock = pygame.time.Clock()
 
 # zmiany FPS do zrobienia...
 
@@ -24,6 +25,6 @@ def run():
         events.check_collision(screen, snake, apple)
         
         pygame.display.flip()
-
+        clock.tick(sets.maxfps)
         
 run()
