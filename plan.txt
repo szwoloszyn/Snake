@@ -18,3 +18,12 @@ eat() wywoła funkcję move() ale zamiast usuwać ostatni element, zostawi go !
 ### move() może zwracać ostatni element który normalnie by przepadał i korzystać z niego będe tylko w eat
 lepiej: jeśli snake zje jabłko, zmień wartość isEten na True, 
 w move() w warunku if isEaten: wywołać eat(body[-1]) i zmienić isEaten na False
+
+==========
+
+out of repo:
+added 'self.maxfps = 25' to class Settings
+time.sleep(zeit) => clock = pygame.time.Clock() # na poczatku def run()
+clock.tick(sets.maxfps)   # na koncu while True
+
+added break to def check_events() for loop - line 16. Fixed 180d directory change bug
