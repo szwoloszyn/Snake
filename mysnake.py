@@ -78,14 +78,22 @@ class MySnake():
         elif self.direction == Direction.DOWN:
             self.y += self.rect_size[0]
 
-        if self.y >= sets.screen_height:
-            self.y = sets.gap
-        if self.x >= sets.screen_width:
-            self.x = sets.gap
-        if self.y < 0:
-            self.y = sets.screen_height - (sets.screen_height%sets.gap)
-        if self.x < 0:
-            self.x = sets.screen_width - (sets.screen_width%sets.gap)
+        edges = sets.get_screen_edges()
+
+        if self.y >= sets.lowerEdge:
+        #if self.y >= sets.screen_height:
+            self.y = sets.upperEdge
+        #if self.x >= sets.screen_width:
+        if self.x >= sets.rightEdge:
+            self.x = sets.leftEdge
+        #if self.y < 0:
+        if self.y < sets.upperEdge:
+            self.y = sets.lowerEdge - sets.gap
+            #self.y = sets.screen_height - (sets.screen_height%sets.gap)
+        #if self.x < 0:
+        if self.x < sets.leftEdge:
+            self.x = sets.rightEdge - sets.gap
+            #self.x = sets.screen_width - (sets.screen_width%sets.gap)
 
         self.body[0].x = self.x
         self.body[0].y = self.y
@@ -111,7 +119,3 @@ class MySnake():
         #print("SNAKE: (", self.x, " , " , self.y , ")" )
         self.move_upt()
         self.drawme(screen)
-
-
-        
-    
