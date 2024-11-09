@@ -14,6 +14,8 @@ def run():
     apple = Apple(sets)
     snake = MySnake(sets)
 
+# zmiany FPS do zrobienia...
+
     while True:
         screen.fill(sets.bg_color)
         apple.update(screen)
