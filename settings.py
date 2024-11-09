@@ -18,6 +18,6 @@ class Settings:
         self.screen_width = 707
         self.screen_height = 351
         self.bg_color = (138,219,118)
-
+        self.maxfps = 25
         self.gap = 16
         self.zeit = 0.025
