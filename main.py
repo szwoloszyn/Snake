@@ -10,8 +10,8 @@ def draw_screen(screen, sets : Settings):
     edges = sets.get_screen_edges()
     for x in edges:
         pygame.draw.line(screen ,x[0],x[1],x[2])
-        #pygame.draw.line(screen ,x)
 
+### TODO REFACTORIZATION, SCORE, STARTING SCREEN, ENDSCREEN ! #
 def run():
     pygame.init()
     sets = Settings()
