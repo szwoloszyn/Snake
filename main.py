@@ -21,9 +21,7 @@ def run():
     apple = Apple(sets)
     snake = MySnake(sets)
     clock = pygame.time.Clock()
-
-# zmiany FPS do zrobienia...
-
+    
     while True:
         screen.fill(sets.bg_color)
         draw_screen(screen, sets)

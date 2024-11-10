@@ -8,8 +8,8 @@ class Apple():
     def __init__(self, sets : Settings):
         self.radius = sets.gap / 2
         GAP = sets.gap
-        self.x = (random.randint( 1,int((sets.screen_width-GAP)/GAP) ))*GAP
-        self.y = (random.randint( 1,int((sets.screen_height-GAP)/GAP) ))*GAP
+        self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
+        self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
         self.color = (255,0,0)
 
     def get_pos(self):
@@ -17,8 +17,8 @@ class Apple():
     
     def eaten(self,sets : Settings):
         GAP = sets.gap
-        self.x = (random.randint( 1,int((sets.screen_width-GAP)/GAP) ))*GAP
-        self.y = (random.randint( 1,int((sets.screen_height-GAP)/GAP) ))*GAP
+        self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
+        self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
         #print("(", self.x, " , " , self.y , ")" )
     def drawme(self, screen):
         #pygame.draw.circle(screen, self.color, 
@@ -29,4 +29,5 @@ class Apple():
 
     def update(self, screen):
         #print("APPLE: (", self.x, " , " , self.y , ")" )
+        #self.eaten(Settings())
         self.drawme(screen)
