@@ -5,8 +5,10 @@ from settings import *
 from mysnake import MySnake, Direction
 
 class Apple():
+    """class representing food for snake"""
     def __init__(self, sets : Settings):
-        self.radius = sets.gap / 2
+        """cords randomly chosen in my screen edges (*GAP) so they spawn in my frames"""
+        self.size = sets.gap
         GAP = sets.gap
         self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
         self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
@@ -16,18 +18,14 @@ class Apple():
         return (self.x, self.y)
     
     def eaten(self,sets : Settings):
+        """changes position of an apple when it got eaten"""
         GAP = sets.gap
         self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
         self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
-        #print("(", self.x, " , " , self.y , ")" )
     def drawme(self, screen):
-        #pygame.draw.circle(screen, self.color, 
-        #(self.x,self.y), self.radius)
-        myRect = pygame.Rect(self.x, self.y, 2*self.radius, 2*self.radius)
+        """prints apple on the screen"""
+        myRect = pygame.Rect(self.x, self.y, self.size, self.size)
         pygame.draw.rect( screen, self.color, myRect)
         
-
     def update(self, screen):
-        #print("APPLE: (", self.x, " , " , self.y , ")" )
-        #self.eaten(Settings())
         self.drawme(screen)

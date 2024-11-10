@@ -5,6 +5,7 @@ import copy
 from settings import *
 
 class Segment():
+    """class representing single segment of my snake's body"""
     def __init__(self,x,y,size, dir : Direction):
         self.x = x
         self.y = y
@@ -15,11 +16,10 @@ class Segment():
         return (self.x, self.y)
     
     def drawme(self, screen, sets : Settings):
+        """prints one segment on the screen"""
         myRect = pygame.Rect(self.x, self.y, self.size, self.size )
         pygame.draw.rect(screen, (20,20,20), myRect )
 
-    def move(self, x, y, sets : Settings):
-        zeit = sets.zeit
-
     def deep_copy(self):
+        """deep copy so I can actually copy the segments for moving them"""
         return copy.deepcopy(self)
