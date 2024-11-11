@@ -22,11 +22,6 @@ def update_playing_screen(screen, sets: Settings, snake : MySnake, apple : Apple
         pygame.display.flip()
 
 def update_pause_screen(screen, sets: Settings, snake : MySnake, apple : Apple, menu : Menu):
-    # draw play button
-    # if score != 0 :
-    #    draw your score
-
-    #snake, apple.draw() ! only draw, NO update
     screen.fill(sets.bg_color)
     draw_screen(screen, sets)
     menu.playButton.drawme(screen, sets)
@@ -81,6 +76,7 @@ def check_collision(screen, snake : MySnake, apple : Apple, menu : Menu):
     if snake.get_pos() == apple.get_pos():
         apple.eaten(sets)
         snake.isEaten = True
+        menu.score += 1
     #prototype of game over - going to endless loop and making endless lag
     for seg in snake.body[1:]:
         if snake.x == seg.x and snake.y == seg.y:
@@ -91,6 +87,7 @@ def game_over(snake : MySnake, apple : Apple, menu : Menu):
     #snake2 = MySnake(Settings()) ??? HOW TO RESET GAME
     #apple2 = Apple( Settings() )
     #snake = snake2
+    menu.reset = True
     menu.finish()
     time.sleep(0.3)
     #pygame.quit()

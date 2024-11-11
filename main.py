@@ -14,7 +14,7 @@ def run():
     sets = Settings()
     screen = pygame.display.set_mode( (sets.screen_width,sets.screen_height) )
     pygame.display.set_caption("SNAKE")
-
+    snake_org, apple_org = MySnake(sets) , Apple(sets)
     menu = Menu(screen, sets)
     apple = Apple(sets)
     snake = MySnake(sets)
@@ -29,5 +29,9 @@ def run():
             events.update_playing_screen(screen, sets, snake, apple)
             events.check_events(screen, snake, apple, menu)
             events.check_collision(screen, snake, apple, menu)
+        if menu.reset == True:
+            snake = snake_org
+            apple = apple_org
+            menu.reset = False
 
 run()

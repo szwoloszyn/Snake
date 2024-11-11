@@ -5,9 +5,10 @@ pygame.font.init()
 
 class Menu():
     def __init__(self, screen, sets):
-        self.playing = False
+        self.playing = True
+        self.reset = False
         self.score = 0
-        self.playButton = Button(screen, sets, "Play")
+        self.playButton = Button(screen, sets, "Play again")
     def play(self):
         if not self.playing:
             self.playing = True
