@@ -4,6 +4,7 @@ import sys, time
 from settings import *
 from mysnake import MySnake, Direction
 from apple import Apple
+from menu import Menu
 
 def draw_screen(screen, sets : Settings):
     """prints screen edges on which game operates"""
@@ -11,7 +12,7 @@ def draw_screen(screen, sets : Settings):
     for x in edges:
         pygame.draw.line(screen ,x[0],x[1],x[2])
 
-def update_screen(screen, sets: Settings, snake : MySnake, apple : Apple):
+def update_playing_screen(screen, sets: Settings, snake : MySnake, apple : Apple):
         """updates every game piece"""
         screen.fill(sets.bg_color)
         draw_screen(screen, sets)
@@ -20,18 +21,47 @@ def update_screen(screen, sets: Settings, snake : MySnake, apple : Apple):
 
         pygame.display.flip()
 
+def update_pause_screen(screen, sets: Settings, snake : MySnake, apple : Apple, menu : Menu):
+    # draw play button
+    # if score != 0 :
+    #    draw your score
 
-def check_events(screen, snake, apple):
+    #snake, apple.draw() ! only draw, NO update
+    screen.fill(sets.bg_color)
+    draw_screen(screen, sets)
+    menu.playButton.drawme(screen, sets)
+    if menu.score != 0:
+        # draw your score later on
+        pass
+
+    pygame.display.flip()
+    
+
+
+def check_events(screen, snake : MySnake, apple : Apple, menu : Menu):
     """going through all input events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over()
-        if event.type == pygame.KEYDOWN:
-          check_keydown(event, screen, snake, apple)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            check_mousedown(event, screen, snake, apple, menu)
+            return 
+        elif event.type == pygame.KEYDOWN:
+          check_keydown(event, screen, snake, apple, menu)
           break
 
-def check_keydown(event, screen, snake : MySnake, apple : Apple):
-    if event.key == pygame.K_w or event.key == pygame.K_UP:
+
+def check_mousedown(event, screen, snake : MySnake, apple : Apple, menu : Menu):
+    mouse = pygame.mouse.get_pos()
+    if menu.playButton.ifCollides(mouse[0], mouse[1]):
+        menu.play()
+
+
+def check_keydown(event, screen, snake : MySnake, apple : Apple, menu : Menu):
+    if event.key == pygame.K_SPACE:
+        snake.isEaten = True
+        return
+    elif event.key == pygame.K_w or event.key == pygame.K_UP:
         if snake.direction != Direction.DOWN:
             snake.change_dir(Direction.UP)
     elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
@@ -43,10 +73,9 @@ def check_keydown(event, screen, snake : MySnake, apple : Apple):
     elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
         if snake.direction != Direction.LEFT:
             snake.change_dir(Direction.RIGHT)
-    elif event.key == pygame.K_SPACE:
-        snake.isEaten = True
 
-def check_collision(screen, snake : MySnake, apple : Apple):
+
+def check_collision(screen, snake : MySnake, apple : Apple, menu : Menu):
     """checks for collisions beetwen my objects. Like snake hits food or hits itself"""
     sets = Settings()
     if snake.get_pos() == apple.get_pos():
@@ -55,11 +84,14 @@ def check_collision(screen, snake : MySnake, apple : Apple):
     #prototype of game over - going to endless loop and making endless lag
     for seg in snake.body[1:]:
         if snake.x == seg.x and snake.y == seg.y:
-            game_over()
+            game_over(snake, apple, menu)
 
-
-def game_over():
+def game_over(snake : MySnake, apple : Apple, menu : Menu):
     """what happens when player loses"""
+    #snake2 = MySnake(Settings()) ??? HOW TO RESET GAME
+    #apple2 = Apple( Settings() )
+    #snake = snake2
+    menu.finish()
     time.sleep(0.3)
-    pygame.quit()
-    sys.exit()
+    #pygame.quit()
+    #sys.exit()

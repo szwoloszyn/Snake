@@ -10,6 +10,7 @@ class Direction(Enum):
 class Settings:
     def __init__(self):
         self.WHITE = (255, 255, 255)
+        self.RED = (255, 50, 50)
         self.screen_width = 707
         self.screen_height = 351
         self.bg_color = (138,219,118)
