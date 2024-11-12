@@ -9,11 +9,19 @@ class Direction(Enum):
 
 class Settings:
     def __init__(self):
-        self.WHITE = (255, 255, 255)
-        self.RED = (255, 50, 50)
+        ### COLORS SET 1
+        self.ED_N_CAP_CLR = (255, 255, 255) # edges and captions
+        self.APPLE_CLR = (255, 50, 50)
+        self.bg_color = (138,219,118)
+        self.SNAKE_CLR = (10, 10, 10)
+        ### COLOR SET 2
+        self.ED_N_CAP_CLR = (255, 255, 255) # edges and captions
+        self.APPLE_CLR = (255, 255, 255)
+        self.bg_color = (0,0,0)
+        self.SNAKE_CLR = (0, 250, 20)
+        ### REST SETTINGS
         self.screen_width = 707
         self.screen_height = 351
-        self.bg_color = (138,219,118)
         self.maxfps = 18
         self.gap = 16
         self.zeit = 0.025
@@ -31,9 +39,9 @@ class Settings:
         right_down_corner = (self.rightEdge, self.lowerEdge )
         right_up_corner = (self.rightEdge, self.upperEdge)
         edges = (
-            ( self.WHITE, left_up_corner, left_down_corner),
-            ( self.WHITE, left_down_corner, right_down_corner),
-            ( self.WHITE, right_down_corner, right_up_corner),
-            ( self.WHITE, right_up_corner, left_up_corner)
+            ( self.ED_N_CAP_CLR, left_up_corner, left_down_corner),
+            ( self.ED_N_CAP_CLR, left_down_corner, right_down_corner),
+            ( self.ED_N_CAP_CLR, right_down_corner, right_up_corner),
+            ( self.ED_N_CAP_CLR, right_up_corner, left_up_corner)
         )
         return edges

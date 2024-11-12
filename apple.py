@@ -13,7 +13,7 @@ class Apple():
         GAP = sets.gap
         self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
         self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
-        self.color = (255,0,0)
+        self.color = sets.APPLE_CLR
 
     def get_pos(self):
         return (self.x, self.y)
@@ -27,6 +27,7 @@ class Apple():
         GAP = sets.gap
         self.x = (random.randint( int(sets.leftEdge/GAP),int((sets.rightEdge-GAP)/GAP) ))*GAP
         self.y = (random.randint( int(sets.upperEdge/GAP),int((sets.lowerEdge-GAP)/GAP) ))*GAP
+
     def drawme(self, screen):
         """prints apple on the screen"""
         myRect = pygame.Rect(self.x, self.y, self.size, self.size)

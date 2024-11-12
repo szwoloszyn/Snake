@@ -20,7 +20,7 @@ class Menu():
         if self.playing:
             font = pygame.font.SysFont('arial',24)
             capt = "score: " + str(self.score)
-            msg = font.render(capt, True, sets.WHITE)
+            msg = font.render(capt, True, sets.ED_N_CAP_CLR)
             msg_rect = msg.get_rect()
             msg_rect.left = sets.gap / 2
             msg_rect.top = sets.gap / 2
@@ -28,7 +28,7 @@ class Menu():
         else:
             font = pygame.font.SysFont('arial',30)
             capt = "SCORE: " + str(self.score)
-            msg = font.render(capt, True, sets.WHITE)
+            msg = font.render(capt, True, sets.ED_N_CAP_CLR)
             msg_rect = msg.get_rect()
             move = self.playButton.height
             msg_rect.center = self.playButton.myButton.center
@@ -44,9 +44,9 @@ class Button():
         self.screen_rect = screen.get_rect()
         self.myButton = pygame.Rect( 0, 0, self.width, self.height)
         self.myButton.center = self.screen_rect.center
-        self.buttonColor = sets.RED
+        self.buttonColor = sets.APPLE_CLR
         self.font = pygame.font.Font('freesansbold.ttf', 32)
-        self.msg = self.font.render(caption, True, sets.WHITE)
+        self.msg = self.font.render(caption, True, sets.ED_N_CAP_CLR)
         self.msg_rect = self.msg.get_rect()
         self.msg_rect.center = self.myButton.center
 
