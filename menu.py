@@ -8,28 +8,39 @@ class Menu():
         self.playing = True
         self.reset = False
         self.score = 0
-        self.playButton = Button(screen, sets, "Play again")
+        self.playButton = Button(screen, sets, "PLAY AGAIN")
+        self.c = 0
     def play(self):
         if not self.playing:
+            self.score = 0
             self.playing = True
     def finish(self):
         if self.playing:
-            self.score = 0
             self.playing = False
     def draw_score(self, screen : pygame.Surface, sets : Settings):
         if self.playing:
-            font = pygame.font.Font('freesansbold.ttf',16)
+            font = pygame.font.SysFont('arial',24)
             capt = "score: " + str(self.score)
             msg = font.render(capt, True, sets.WHITE)
             msg_rect = msg.get_rect()
-            msg_rect.left = 0
-            msg_rect.top = 0
+            msg_rect.left = sets.gap / 2
+            msg_rect.top = sets.gap / 2
             screen.blit(msg, msg_rect)
+        else:
+            font = pygame.font.SysFont('arial',30)
+            capt = "SCORE: " + str(self.score)
+            msg = font.render(capt, True, sets.WHITE)
+            msg_rect = msg.get_rect()
+            move = self.playButton.height
+            msg_rect.center = self.playButton.myButton.center
+            msg_rect.centery -= move
+            screen.blit(msg, msg_rect)
+            pass
 
 
 class Button():
     def __init__(self, screen : pygame.Surface, sets : Settings, caption : str):
-        self.width = 200
+        self.width = 230
         self.height = 70
         self.screen_rect = screen.get_rect()
         self.myButton = pygame.Rect( 0, 0, self.width, self.height)
