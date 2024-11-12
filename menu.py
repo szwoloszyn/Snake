@@ -9,7 +9,6 @@ class Menu():
         self.reset = False
         self.score = 0
         self.playButton = Button(screen, sets, "PLAY AGAIN")
-        self.c = 0
     def play(self):
         if not self.playing:
             self.score = 0

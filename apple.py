@@ -1,5 +1,6 @@
 import pygame
 import random
+import copy
 
 from settings import *
 from mysnake import MySnake, Direction
@@ -16,6 +17,10 @@ class Apple():
 
     def get_pos(self):
         return (self.x, self.y)
+    
+    def deep_copy(self):
+        """deep copy so I can actually copy the segments for moving them"""
+        return copy.deepcopy(self)
     
     def eaten(self,sets : Settings):
         """changes position of an apple when it got eaten"""

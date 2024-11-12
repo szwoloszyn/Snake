@@ -30,8 +30,8 @@ def run():
             events.check_events(screen, snake, apple, menu)
             events.check_collision(screen, snake, apple, menu)
         if menu.reset == True:
-            snake = snake_org
-            apple = apple_org
+            snake = snake_org.deep_copy()
+            apple = apple_org.deep_copy()
             menu.reset = False
 
 run()

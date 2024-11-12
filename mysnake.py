@@ -1,6 +1,7 @@
 import pygame
 from enum import Enum
 import time
+import copy
 
 from settings import *
 from segment import Segment
@@ -26,6 +27,10 @@ class MySnake():
     def get_pos(self):
         return (self.x, self.y)
 
+
+    def deep_copy(self):
+        """deep copy so I can actually copy the segments for moving them"""
+        return copy.deepcopy(self)
 
     def eat(self, seg : Segment):
         """making snake one segment longer"""

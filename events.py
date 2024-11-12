@@ -86,10 +86,6 @@ def check_collision(screen, snake : MySnake, apple : Apple, menu : Menu):
 
 def game_over(snake : MySnake, apple : Apple, menu : Menu):
     """what happens when player loses"""
-    menu.c += 1
-    print(menu.c)
-    if menu.c == 2:
-        pass
     menu.reset = True
     menu.finish()
     time.sleep(0.3)
