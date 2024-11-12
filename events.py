@@ -39,7 +39,10 @@ def check_events(screen, snake : MySnake, apple : Apple, menu : Menu):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over(snake, apple, menu)
-            #pygame.quit()
+            pygame.quit()
+            sys.exit()
+            #if not menu.playing:
+                #pygame.quit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             check_mousedown(event, screen, snake, apple, menu)
             return 

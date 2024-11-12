@@ -57,5 +57,9 @@ class Button():
             return False
 
     def drawme(self, screen, sets : Settings):
-        pygame.draw.rect(screen, self.buttonColor, self.myButton)
+        ### WERSJA BEZ OUTLINE
+        #pygame.draw.rect(screen, self.buttonColor, self.myButton)
+        #screen.blit(self.msg, self.msg_rect)
+        outline = self.myButton.inflate(6,6)
+        pygame.draw.rect(screen, self.buttonColor, outline, 6)
         screen.blit(self.msg, self.msg_rect)

@@ -10,10 +10,11 @@ class Direction(Enum):
 class Settings:
     def __init__(self):
         ### COLORS SET 1
-        self.ED_N_CAP_CLR = (255, 255, 255) # edges and captions
-        self.APPLE_CLR = (255, 50, 50)
-        self.bg_color = (138,219,118)
-        self.SNAKE_CLR = (10, 10, 10)
+        # self.ED_N_CAP_CLR = (255, 255, 255) # edges and captions
+        # self.APPLE_CLR = (255, 50, 50)
+        # self.bg_color = (138,219,118)
+        # self.bg_color = (50,127,42)
+        # self.SNAKE_CLR = (10, 10, 10)
         ### COLOR SET 2
         self.ED_N_CAP_CLR = (255, 255, 255) # edges and captions
         self.APPLE_CLR = (255, 255, 255)
