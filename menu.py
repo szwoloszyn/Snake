@@ -14,7 +14,17 @@ class Menu():
             self.playing = True
     def finish(self):
         if self.playing:
+            self.score = 0
             self.playing = False
+    def draw_score(self, screen : pygame.Surface, sets : Settings):
+        if self.playing:
+            font = pygame.font.Font('freesansbold.ttf',16)
+            capt = "score: " + str(self.score)
+            msg = font.render(capt, True, sets.WHITE)
+            msg_rect = msg.get_rect()
+            msg_rect.left = 0
+            msg_rect.top = 0
+            screen.blit(msg, msg_rect)
 
 
 class Button():

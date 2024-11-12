@@ -12,19 +12,20 @@ def draw_screen(screen, sets : Settings):
     for x in edges:
         pygame.draw.line(screen ,x[0],x[1],x[2])
 
-def update_playing_screen(screen, sets: Settings, snake : MySnake, apple : Apple):
+def update_playing_screen(screen, sets: Settings, snake : MySnake, apple : Apple, menu : Menu):
         """updates every game piece"""
         screen.fill(sets.bg_color)
         draw_screen(screen, sets)
         apple.update(screen)
         snake.update(screen)
-
+        menu.draw_score(screen, sets)
         pygame.display.flip()
 
 def update_pause_screen(screen, sets: Settings, snake : MySnake, apple : Apple, menu : Menu):
     screen.fill(sets.bg_color)
     draw_screen(screen, sets)
     menu.playButton.drawme(screen, sets)
+    menu.draw_score(screen, sets)
     if menu.score != 0:
         # draw your score later on
         pass
@@ -37,7 +38,8 @@ def check_events(screen, snake : MySnake, apple : Apple, menu : Menu):
     """going through all input events"""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            game_over()
+            game_over(snake, apple, menu)
+            pygame.quit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             check_mousedown(event, screen, snake, apple, menu)
             return 

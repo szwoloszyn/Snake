@@ -26,7 +26,7 @@ def run():
             events.update_pause_screen(screen, sets, snake, apple, menu)
             events.check_events(screen, snake, apple, menu)
         else: 
-            events.update_playing_screen(screen, sets, snake, apple)
+            events.update_playing_screen(screen, sets, snake, apple, menu)
             events.check_events(screen, snake, apple, menu)
             events.check_collision(screen, snake, apple, menu)
         if menu.reset == True:
